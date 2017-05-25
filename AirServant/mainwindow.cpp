@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     if(file)
         file>>addr>>port;
     Communication::connectToMaster(QHostAddress(addr),port);
-
+    servant.sendbeat();
 }
 
 MainWindow::~MainWindow()
