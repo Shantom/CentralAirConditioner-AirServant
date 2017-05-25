@@ -1,6 +1,8 @@
 #ifndef LOGINCONTROLLER_H
 #define LOGINCONTROLLER_H
 #include <string>
+#include "headers.h"
+
 
 
 class LoginController

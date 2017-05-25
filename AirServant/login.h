@@ -2,7 +2,8 @@
 #define LOGIN_H
 
 #include <QDialog>
-
+#include "logincontroller.h"
+#include "headers.h"
 namespace Ui {
 class Login;
 }

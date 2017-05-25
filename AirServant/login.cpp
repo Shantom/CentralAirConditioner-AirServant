@@ -1,6 +1,8 @@
 #include "login.h"
 #include "ui_login.h"
 
+
+
 Login::Login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Login)
@@ -16,5 +18,11 @@ Login::~Login()
 
 void Login::on_pushButton_clicked()
 {
-    accept();
+    QString roomid=ui->lineEdit_room->text();
+    QString userid=ui->lineEdit_user->text();
+    LoginController lc;
+    if(lc.login(roomid.toStdString(),userid.toStdString()))
+        accept();
+    else
+        QMessageBox::warning(this,"Failed","ID mismatched.");
 }

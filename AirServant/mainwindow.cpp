@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    std::string addr="127.0.0.1";
+    int port=40000;
+    std::ifstream file("serverAddr.txt");
+    if(file)
+        file>>addr>>port;
+    Communication::connectToMaster(QHostAddress(addr),port);
+
 }
 
 MainWindow::~MainWindow()
@@ -19,5 +26,8 @@ bool MainWindow::login()
     if(lg.exec()==QDialog::Accepted)
     {
         show();
+        return true;
     }
+    else
+        return false;
 }

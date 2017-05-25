@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,11 +15,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     login.cpp \
-    logincontroller.cpp
+    logincontroller.cpp \
+    servant.cpp \
+    communication.cpp \
+    pack.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
-    logincontroller.h
+    logincontroller.h \
+    servant.h \
+    communication.h \
+    headers.h \
+    pack.h
 
 FORMS    += mainwindow.ui \
     login.ui
+
+DISTFILES += \
+    serverAddr.dat

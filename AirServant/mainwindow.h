@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <login.h>
+#include "headers.h"
+#include "servant.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Servant servant;
 };
 
 #endif // MAINWINDOW_H
