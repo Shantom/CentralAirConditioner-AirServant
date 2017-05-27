@@ -8,7 +8,12 @@ Servant::Servant()
 void Servant::sendbeat()
 {
     Communication com;
-    TempPack p(cur_temperature);
-    com.sendPack(p);
+    TemperatureClient p(cur_temperature);
+    com.sendPack(&p);
+}
+
+void Servant::setPeriod(int newPeriod)
+{
+    refresh_period=newPeriod;
 }
 

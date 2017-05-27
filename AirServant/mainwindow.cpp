@@ -6,12 +6,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    std::string addr="127.0.0.1";
-    int port=40000;
-    std::ifstream file("serverAddr.txt");
+
+
+    std::string addr="10.201.11.213";
+    int port=6666;
+    std::ifstream file("../serverAddr.dat");
     if(file)
         file>>addr>>port;
-    Communication::connectToMaster(QHostAddress(addr),port);
+    else
+    {
+        qDebug()<<"file failed";
+    }
+    Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
     servant.sendbeat();
 }
 

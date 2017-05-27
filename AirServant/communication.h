@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <headers.h>
-#include "pack.h"
+#include "servant.h"
+#include "airpacket.h"
+#include "handler.h"
 
 class Communication : public QObject
 {
@@ -11,13 +13,15 @@ class Communication : public QObject
 public:
     explicit Communication(QObject *parent = 0);
     static bool connectToMaster(QHostAddress addr, quint16 port);
-    void sendPack(Pack package);
+    static void sendPack(AirPacket* package);
 private:
     static QTcpSocket socket;
+    static Servant * servant;
 
 signals:
 
 public slots:
+    static void on_readReady();
 };
 
 #endif // COMMUNICATION_H

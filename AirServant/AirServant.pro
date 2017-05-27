@@ -18,7 +18,10 @@ SOURCES += main.cpp\
     logincontroller.cpp \
     servant.cpp \
     communication.cpp \
-    pack.cpp
+    aircommon.cpp \
+    airpacket.cpp \
+    handler.cpp \
+    startup.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -26,7 +29,10 @@ HEADERS  += mainwindow.h \
     servant.h \
     communication.h \
     headers.h \
-    pack.h
+    aircommon.h \
+    airpacket.h \
+    handler.h \
+    startup.h
 
 FORMS    += mainwindow.ui \
     login.ui

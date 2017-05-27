@@ -16,7 +16,7 @@ Login::~Login()
     delete ui;
 }
 
-void Login::on_pushButton_clicked()
+void Login::on_pushButton_login_clicked()
 {
     QString roomid=ui->lineEdit_room->text();
     QString userid=ui->lineEdit_user->text();

@@ -18,7 +18,7 @@ private:
     int sourcePort;
 };
 
-class TemperatureClient:AirPacket
+class TemperatureClient:public AirPacket
 {
 public:
     TemperatureClient(int _temp);
@@ -28,7 +28,7 @@ private:
     int temp;
 };
 
-class AuthClient:AirPacket
+class AuthClient:public AirPacket
 {
 public:
     AuthClient(std::string _room,std::string _id);
@@ -39,7 +39,7 @@ private:
     std::string id;
 };
 
-class StartWindClient:AirPacket
+class StartWindClient:public AirPacket
 {
 public:
     StartWindClient(int _desttemp,std::string _velocity);
@@ -50,7 +50,7 @@ private:
     int velocity;
 };
 
-class StopWindClient:AirPacket
+class StopWindClient:public AirPacket
 {
 public:
     StopWindClient();
@@ -60,45 +60,41 @@ private:
 
 };
 
-class FreshRateServer:AirPacket
+class FreshRateServer:public AirPacket
 {
 public:
     FreshRateServer(int _freshperiod);
     FreshRateServer(std::string& packet);
     std::string toJsonStr();
-private:
     int freshperiod;
 };
 
-class WorkStateServer:AirPacket
+class WorkStateServer:public AirPacket
 {
 public:
     WorkStateServer(std::string _workingmode,int _deftemp);
     WorkStateServer(std::string& packet);
     std::string toJsonStr();
-private:
     std::string workingmode;
     int defaulttemp;
 };
 
-class CountFeeServer:AirPacket
+class CountFeeServer:public AirPacket
 {
 public:
     CountFeeServer(float kwh,float bill);
     CountFeeServer(std::string& packet);
     std::string toJsonStr();
-private:
     float kwh;
     float bill;
 };
 
-class SendWindServer:AirPacket
+class SendWindServer:public AirPacket
 {
 public:
     SendWindServer(int windtemp,std::string velocity);
     SendWindServer(std::string& packet);
     std::string toJsonStr();
-private:
     int windtemp;
     std::string velocity;
 };

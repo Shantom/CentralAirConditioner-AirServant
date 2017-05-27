@@ -11,4 +11,6 @@
 #include <fstream>
 
 #include "communication.h"
+#include "airpacket.h"
+#include "json.hpp"
 #endif // QTHEADERS_H

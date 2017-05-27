@@ -7,9 +7,12 @@ class Servant
 public:
     Servant();
     void sendbeat();
+    void setPeriod(int newPeriod);
 
 private:
-    int cur_temperature;
+    int cur_temperature=26;
+    int refresh_period=3;
+
 };
 
 class ServantInfo{
