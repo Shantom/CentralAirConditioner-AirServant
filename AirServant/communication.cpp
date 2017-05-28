@@ -1,6 +1,6 @@
 #include "communication.h"
 QTcpSocket Communication::socket;
-Servant *Communication::servant;
+Servant * Communication::servant;
 
 Communication::Communication(QObject *parent) : QObject(parent)
 {
@@ -9,10 +9,9 @@ Communication::Communication(QObject *parent) : QObject(parent)
 
 bool Communication::connectToMaster(QHostAddress addr,quint16 port)
 {
-
     socket.connectToHost(addr,port);
     qDebug()<<addr<<port;
-    if(socket.waitForConnected(300000))
+    if(socket.waitForConnected())
     {
         qDebug()<<"connected!";
         connect(&socket,&QIODevice::readyRead,&Communication::on_readReady);
@@ -28,11 +27,15 @@ bool Communication::connectToMaster(QHostAddress addr,quint16 port)
 void Communication::sendPack(AirPacket *package)
 {
     std::string jsonStr=package->toJsonStr();
-    socket.write(QByteArray(jsonStr.c_str(),jsonStr.length()));
+    QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
+    qDebug()<<jsonB[2];
+    socket.write(jsonB);
 }
 
 void Communication::on_readReady()
 {
+    qDebug()<<"triggered successfully.";
+
     QByteArray data = socket.readAll();
     std::string dataStr=data.toStdString();
     auto dataJson=json::parse(dataStr);
@@ -43,12 +46,19 @@ void Communication::on_readReady()
         handler.handleFromPacket(&packet,servant);
 
     }
-    else
+    else if(dataJson["type"]=="mode")
     {
         //do something here
         ;
     }
-
-
-    qDebug()<<"triggered successfully.";
+    else if(dataJson["type"]="bill")
+    {
+        //do something here
+        ;
+    }
+    else if(dataJson["type"]="wind")
+    {
+        //do something here
+        ;
+    }
 }

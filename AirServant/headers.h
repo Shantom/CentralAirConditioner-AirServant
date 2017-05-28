@@ -6,6 +6,7 @@
 #include <QHostAddress>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTest>
 
 #include <string>
 #include <fstream>
@@ -13,4 +14,5 @@
 #include "communication.h"
 #include "airpacket.h"
 #include "json.hpp"
+#include "aircommon.h"
 #endif // QTHEADERS_H

@@ -19,4 +19,11 @@ public:
     void handleFromPacket(AirPacket *packet, Servant * servant);
 };
 
+class WorkingModeHandler:public Handler
+{
+public:
+    WorkingModeHandler();
+    void handleFromPacket(AirPacket *packet, Servant * servant);
+};
+
 #endif // HANDLER_H

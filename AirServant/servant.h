@@ -6,10 +6,13 @@ class Servant
 {
 public:
     Servant();
-    void sendbeat();
+    void sendBeat();
     void setPeriod(int newPeriod);
+    void setState(int temp, std::string mode);
+    void startBeat();
 
 private:
+    //work_mode mode=mode_hot;
     int cur_temperature=26;
     int refresh_period=3;
 

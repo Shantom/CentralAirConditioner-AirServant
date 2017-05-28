@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug()<<"file failed";
     }
     Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
-    servant.sendbeat();
+    servant.sendBeat();
 }
 
 MainWindow::~MainWindow()

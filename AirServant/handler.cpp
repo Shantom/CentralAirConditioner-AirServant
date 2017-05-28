@@ -10,7 +10,7 @@ RefreshRateHandler::RefreshRateHandler()
 
 }
 
-void RefreshRateHandler::handleFromPacket(AirPacket *packet, Servant *servant)
+void RefreshRateHandler::handleFromPacket(AirPacket *packet, Servant * servant)
 {
     FreshRateServer * packet_f=reinterpret_cast<FreshRateServer*>(packet);
     int period = packet_f->freshperiod;
@@ -18,5 +18,15 @@ void RefreshRateHandler::handleFromPacket(AirPacket *packet, Servant *servant)
     qDebug()<<period<<"modified period successfully.";
 
     //do something here
+
+}
+
+void WorkingModeHandler::handleFromPacket(AirPacket *packet, Servant *servant)
+{
+    WorkStateServer * packet_w=reinterpret_cast<WorkStateServer*>(packet);
+    int temp=packet_w->defaulttemp;
+    std::string mode=packet_w->workingmode;
+    //servant->setState(temp,mode);
+    qDebug()<<temp<<mode.c_str()<<"modified state successfully.";
 
 }

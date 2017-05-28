@@ -14,9 +14,9 @@ public:
     explicit Communication(QObject *parent = 0);
     static bool connectToMaster(QHostAddress addr, quint16 port);
     static void sendPack(AirPacket* package);
-private:
     static QTcpSocket socket;
     static Servant * servant;
+private:
 
 signals:
 

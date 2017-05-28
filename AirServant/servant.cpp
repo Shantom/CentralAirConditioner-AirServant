@@ -2,10 +2,10 @@
 
 Servant::Servant()
 {
-
+    Communication::servant=this;
 }
 
-void Servant::sendbeat()
+void Servant::sendBeat()
 {
     Communication com;
     TemperatureClient p(cur_temperature);
@@ -15,5 +15,14 @@ void Servant::sendbeat()
 void Servant::setPeriod(int newPeriod)
 {
     refresh_period=newPeriod;
+}
+
+void Servant::startBeat()
+{
+    while(true)
+    {
+        sendBeat();
+        QTest::qWait(1000*refresh_period);
+    }
 }
 
