@@ -1,5 +1,8 @@
 #ifndef QTHEADERS_H
 #define QTHEADERS_H
+
+#define MASTER false
+
 #include <QDebug>
 #include <QMessageBox>
 #include <QTcpSocket>
@@ -15,4 +18,5 @@
 #include "airpacket.h"
 #include "json.hpp"
 #include "aircommon.h"
+
 #endif // QTHEADERS_H

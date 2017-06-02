@@ -17,8 +17,20 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         qDebug()<<"file failed";
     }
-    Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
-    servant.sendBeat();
+    if(!MASTER)
+    {
+        bool result=
+                Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
+        if(!result)
+        {
+            QMessageBox::critical(this,"error","can't connect to the master!");
+            exit(404);
+        }
+    }
+    else
+    {
+        servant.sendBeat();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -28,6 +40,9 @@ MainWindow::~MainWindow()
 
 bool MainWindow::login()
 {
+    if(!MASTER)//for debugging
+        return true;
+
     Login lg;
     if(lg.exec()==QDialog::Accepted)
     {

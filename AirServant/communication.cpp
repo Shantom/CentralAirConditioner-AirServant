@@ -19,7 +19,7 @@ bool Communication::connectToMaster(QHostAddress addr,quint16 port)
     }
     else
     {
-        qDebug()<<"failed";
+        qDebug()<<"connection failed";
         return false;
     }
 }
@@ -28,16 +28,17 @@ void Communication::sendPack(AirPacket *package)
 {
     std::string jsonStr=package->toJsonStr();
     QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
-    qDebug()<<jsonB[2];
     socket.write(jsonB);
 }
 
 void Communication::on_readReady()
 {
-    qDebug()<<"triggered successfully.";
 
     QByteArray data = socket.readAll();
+    qDebug()<<"read successfully.";
+
     std::string dataStr=data.toStdString();
+    qDebug()<< dataStr.c_str();
     auto dataJson=json::parse(dataStr);
     if(dataJson["type"]=="freshrate")
     {
