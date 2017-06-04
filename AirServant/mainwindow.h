@@ -22,7 +22,6 @@ public:
 private:
     Ui::MainWindow *ui;
     Servant servant;
-    std::thread *beat;
 };
 
 #endif // MAINWINDOW_H

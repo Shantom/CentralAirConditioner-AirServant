@@ -2,6 +2,7 @@
 #define SERVANT_H
 #include "headers.h"
 #include "beatcontroller.h"
+#include <QTimer>
 
 class Servant
 {
@@ -11,11 +12,13 @@ public:
     void setPeriod(int newPeriod);
     void setState(int temp, std::string mode);
     void startBeat();
+    int getPeriod(){return refresh_period;}
 
 private:
     work_mode mode=mode_hot;
     int cur_temperature=26;
     int refresh_period=3;
+    QTimer *beatTimer;
 
 };
 

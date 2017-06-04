@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::critical(this,"error","can't connect to the master!");
         exit(404);
     }
-    beat=new std::thread(std::bind(&Servant::startBeat,&servant));
+    servant.startBeat();
 }
 MainWindow::~MainWindow()
 {

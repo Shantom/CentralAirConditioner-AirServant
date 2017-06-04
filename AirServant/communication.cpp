@@ -67,9 +67,5 @@ void Communication::on_readReady()
 
 void Communication::on_beat(TemperatureClient *package)
 {
-//    sendPack(packet);
-    std::string jsonStr=package->toJsonStr();
-    QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
-    qDebug()<<jsonB;
-    socket.write(jsonB);
+    sendPack(package);
 }

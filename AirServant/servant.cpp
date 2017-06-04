@@ -14,6 +14,7 @@ void Servant::sendBeat()
 void Servant::setPeriod(int newPeriod)
 {
     refresh_period=newPeriod;
+    beatTimer->setInterval(1000*refresh_period);
 }
 
 void Servant::setState(int temp, std::__cxx11::string mode)
@@ -27,15 +28,14 @@ void Servant::setState(int temp, std::__cxx11::string mode)
 
 void Servant::startBeat()
 {
+    BeatController::servant=this;
     BeatController::theCtrler=new BeatController();
     BeatController::connect(BeatController::theCtrler,
                             &BeatController::beat,
                             &Communication::on_beat);
-    while(true)
-    {
-        sendBeat();
-        QTest::qWait(1000*refresh_period);
-        qDebug()<<"refresh_period="<<refresh_period;
-    }
+    beatTimer=new QTimer();
+    beatTimer->setInterval(1000*refresh_period);
+    beatTimer->connect(beatTimer,&QTimer::timeout,&BeatController::on_beat);
+    beatTimer->start();
 }
 
