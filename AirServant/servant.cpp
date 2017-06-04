@@ -1,8 +1,10 @@
 #include "servant.h"
+#include "mainwindow.h"
 
 Servant::Servant()
 {
     Communication::servant=this;
+
 }
 
 void Servant::sendBeat()
@@ -24,6 +26,14 @@ void Servant::setState(int temp, std::__cxx11::string mode)
         this->mode=mode_hot;
     else if(mode=="cold")
         this->mode=mode_cold;
+    RefreshUIController::theCtrler->refresh();
+}
+
+void Servant::setBill(float bill, float kwh)
+{
+    this->bill=bill;
+    this->kwh=kwh;
+    RefreshUIController::theCtrler->refresh();
 }
 
 void Servant::startBeat()

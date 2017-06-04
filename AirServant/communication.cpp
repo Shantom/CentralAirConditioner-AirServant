@@ -46,17 +46,19 @@ void Communication::on_readReady()
         FreshRateServer packet(dataStr);
         RefreshRateHandler handler;
         handler.handleFromPacket(&packet,servant);
-
     }
     else if(dataJson["type"]=="mode")
     {
-        //do something here
+        WorkStateServer packet(dataStr);
+        WorkingModeHandler handler;
+        handler.handleFromPacket(&packet,servant);
         ;
     }
     else if(dataJson["type"]=="bill")
     {
-        //do something here
-        ;
+        CountFeeServer packet(dataStr);
+        UpdateBillHandler handler;
+        handler.handleFromPacket(&packet,servant);
     }
     else if(dataJson["type"]=="wind")
     {

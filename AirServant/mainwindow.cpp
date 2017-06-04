@@ -6,7 +6,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    servant.setWin(this);
+    RefreshUIController::theCtrler=new RefreshUIController();
+    RefreshUIController::connect(RefreshUIController::theCtrler,
+                                &RefreshUIController::refresh,
+                                this,
+                                &MainWindow::refreshInfo);
 
     std::string addr="10.201.11.213";
     int port=6666;
@@ -41,4 +46,11 @@ bool MainWindow::login()
     }
     else
         return false;
+}
+
+void MainWindow::refreshInfo()
+{
+    ui->label_bill->setText(QString("%1").arg(servant.getBill()));
+    ui->label_consumption->setText(QString("%1").arg(servant.getKwh()));
+    ui->label_mode->setText(QString::fromStdString(servant.getMode()));
 }

@@ -147,7 +147,7 @@ WorkStateServer::WorkStateServer(std::string& packet)
 {
     lowerStr(packet);
     json pac=json::parse(packet);
-    workingmode=pac["workingmdoe"];
+    workingmode=pac["workingmode"];
     defaulttemp=pac["defaulttemp"];
 }
 

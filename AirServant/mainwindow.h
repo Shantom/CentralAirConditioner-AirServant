@@ -22,6 +22,8 @@ public:
 private:
     Ui::MainWindow *ui;
     Servant servant;
+public slots:
+    void refreshInfo();
 };
 
 #endif // MAINWINDOW_H

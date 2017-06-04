@@ -26,6 +26,12 @@ public:
     void handleFromPacket(AirPacket *packet, Servant * servant);
 };
 
+class UpdateBillHandler:public Handler
+{
+public:
+    UpdateBillHandler();
+    void handleFromPacket(AirPacket *packet, Servant * servant);
+};
 
 
 #endif // HANDLER_H
