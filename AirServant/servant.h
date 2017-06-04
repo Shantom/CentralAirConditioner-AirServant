@@ -1,6 +1,7 @@
 #ifndef SERVANT_H
 #define SERVANT_H
 #include "headers.h"
+#include "beatcontroller.h"
 
 class Servant
 {
@@ -12,7 +13,7 @@ public:
     void startBeat();
 
 private:
-    //work_mode mode=mode_hot;
+    work_mode mode=mode_hot;
     int cur_temperature=26;
     int refresh_period=3;
 

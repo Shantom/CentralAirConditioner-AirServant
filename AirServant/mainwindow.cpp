@@ -15,24 +15,17 @@ MainWindow::MainWindow(QWidget *parent) :
         file>>addr>>port;
     else
     {
-        qDebug()<<"file failed";
+        qDebug()<<"cannot open file.";
     }
-    if(!MASTER)
+    bool result=
+            Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
+    if(!result)
     {
-        bool result=
-                Communication::connectToMaster(QHostAddress(QString::fromStdString(addr)),port);
-        if(!result)
-        {
-            QMessageBox::critical(this,"error","can't connect to the master!");
-            exit(404);
-        }
+        QMessageBox::critical(this,"error","can't connect to the master!");
+        exit(404);
     }
-    else
-    {
-        servant.sendBeat();
-    }
+    beat=new std::thread(std::bind(&Servant::startBeat,&servant));
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -40,9 +33,6 @@ MainWindow::~MainWindow()
 
 bool MainWindow::login()
 {
-    if(!MASTER)//for debugging
-        return true;
-
     Login lg;
     if(lg.exec()==QDialog::Accepted)
     {

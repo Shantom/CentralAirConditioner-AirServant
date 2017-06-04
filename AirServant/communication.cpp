@@ -28,6 +28,7 @@ void Communication::sendPack(AirPacket *package)
 {
     std::string jsonStr=package->toJsonStr();
     QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
+    qDebug()<<jsonB;
     socket.write(jsonB);
 }
 
@@ -52,14 +53,23 @@ void Communication::on_readReady()
         //do something here
         ;
     }
-    else if(dataJson["type"]="bill")
+    else if(dataJson["type"]=="bill")
     {
         //do something here
         ;
     }
-    else if(dataJson["type"]="wind")
+    else if(dataJson["type"]=="wind")
     {
         //do something here
         ;
     }
+}
+
+void Communication::on_beat(TemperatureClient *package)
+{
+//    sendPack(packet);
+    std::string jsonStr=package->toJsonStr();
+    QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
+    qDebug()<<jsonB;
+    socket.write(jsonB);
 }

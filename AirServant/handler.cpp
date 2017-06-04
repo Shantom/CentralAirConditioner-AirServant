@@ -26,7 +26,7 @@ void WorkingModeHandler::handleFromPacket(AirPacket *packet, Servant *servant)
     WorkStateServer * packet_w=reinterpret_cast<WorkStateServer*>(packet);
     int temp=packet_w->defaulttemp;
     std::string mode=packet_w->workingmode;
-    //servant->setState(temp,mode);
-    qDebug()<<temp<<mode.c_str()<<"modified state successfully.";
+    servant->setState(temp,mode);
+    qDebug()<<temp<<"modified state to *"<<mode.c_str()<<"* successfully.";
 
 }

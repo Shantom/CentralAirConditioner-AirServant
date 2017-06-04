@@ -5,7 +5,7 @@ Log::Log()
 
 }
 
-Log::startLogging()
+void Log::startLogging()
 {
-    file.open("AirServant.log",std::ios_base::out|std::ios_base::app);
+    //file.open("AirServant.log",std::ios_base::out|std::ios_base::app);
 }

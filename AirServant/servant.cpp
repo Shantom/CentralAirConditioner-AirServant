@@ -7,9 +7,8 @@ Servant::Servant()
 
 void Servant::sendBeat()
 {
-    Communication com;
     TemperatureClient p(cur_temperature);
-    com.sendPack(&p);
+    BeatController::sendBeat(&p);
 }
 
 void Servant::setPeriod(int newPeriod)
@@ -17,12 +16,26 @@ void Servant::setPeriod(int newPeriod)
     refresh_period=newPeriod;
 }
 
+void Servant::setState(int temp, std::__cxx11::string mode)
+{
+    cur_temperature=temp;
+    if(mode=="hot")
+        this->mode=mode_hot;
+    else if(mode=="cold")
+        this->mode=mode_cold;
+}
+
 void Servant::startBeat()
 {
+    BeatController::theCtrler=new BeatController();
+    BeatController::connect(BeatController::theCtrler,
+                            &BeatController::beat,
+                            &Communication::on_beat);
     while(true)
     {
         sendBeat();
         QTest::qWait(1000*refresh_period);
+        qDebug()<<"refresh_period="<<refresh_period;
     }
 }
 

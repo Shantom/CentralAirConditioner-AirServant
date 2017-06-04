@@ -6,6 +6,7 @@
 #include "servant.h"
 #include "airpacket.h"
 #include "handler.h"
+#include <QQueue>
 
 class Communication : public QObject
 {
@@ -17,11 +18,13 @@ public:
     static QTcpSocket socket;
     static Servant * servant;
 private:
+    static QQueue<AirPacket *> sendQueue;
 
 signals:
 
 public slots:
     static void on_readReady();
+    static void on_beat(TemperatureClient * package);
 };
 
 #endif // COMMUNICATION_H

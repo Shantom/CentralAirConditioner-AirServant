@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     airpacket.cpp \
     handler.cpp \
     startup.cpp \
-    log.cpp
+    log.cpp \
+    beatcontroller.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -34,7 +35,8 @@ HEADERS  += mainwindow.h \
     airpacket.h \
     handler.h \
     startup.h \
-    log.h
+    log.h \
+    beatcontroller.h
 
 FORMS    += mainwindow.ui \
     login.ui

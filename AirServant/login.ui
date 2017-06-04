@@ -24,7 +24,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_room"/>
+      <widget class="QLineEdit" name="lineEdit_room">
+       <property name="text">
+        <string>A15</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -38,7 +42,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_user"/>
+      <widget class="QLineEdit" name="lineEdit_user">
+       <property name="text">
+        <string>1234567890</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

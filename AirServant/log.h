@@ -6,7 +6,7 @@ class Log
 {
 public:
     Log();
-    static startLogging();
+    static void startLogging();
     static std::ofstream file;
 };
 
