@@ -37,6 +37,19 @@ void Servant::setBill(float bill, float kwh)
     RefreshUIController::theCtrler->refresh();
 }
 
+void Servant::setWind(int windtemp, std::__cxx11::string velocity)
+{
+    if(velocity=="none")
+        this->velocity="NONE";
+    else if(velocity=="high")
+        this->velocity="HIGH";
+    else if(velocity=="medium")
+        this->velocity="MEDIUM";
+    else if(velocity=="low")
+        this->velocity="LOW";
+    this->tempOfMaster=windtemp;
+}
+
 void Servant::startBeat()
 {
     BeatController::servant=this;

@@ -23,6 +23,7 @@ public:
 private:
     QTimer timer;
     bool isSummer;
+    std::string velocity;
 signals:
 
 public slots:

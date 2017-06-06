@@ -30,8 +30,7 @@ public:
     float getKwh(){return kwh;}
     void setActive(bool isActive){this->isActive=isActive;}
     bool getActive(){return isActive;}
-    void setWind(int windtemp,std::string velocity){this->velocity=velocity;
-                                                    this->tempOfMaster=windtemp;}
+    void setWind(int windtemp,std::string velocity);
     std::string getVelocity(){return velocity;}
     void startBeat();
 

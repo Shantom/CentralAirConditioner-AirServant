@@ -39,7 +39,7 @@ bool RequestController::request(int goal, std::string velocity)
             ||velocity=="NONE"
             ||goal==-1)
     {
-        if(goal!=-1)
+        if(goal!=-1&&goal!=0)
             RequestController::goal=goal;
         if(!velocity.empty())
             RequestController::velocity=velocity;
