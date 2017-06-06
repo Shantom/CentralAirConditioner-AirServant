@@ -11,7 +11,7 @@ RequestController::RequestController(QObject *parent) : QObject(parent)
 void RequestController::initial(Servant * serv)
 {
     RequestController::servant=serv;
-    velocity="MEDIUM";
+    velocity="NONE";
     oneSecond.setInterval(1000);
     oneSecond.setSingleShot(true);
     connect(&oneSecond,&QTimer::timeout,&RequestController::sendRequest);
@@ -36,9 +36,11 @@ bool RequestController::request(int goal, std::string velocity)
     int cur_temp=servant->getTemp();
     if(goal<=cur_temp&&servant->getMode()=="COLD"
             ||goal>=cur_temp&&servant->getMode()=="HOT"
-            ||velocity=="NONE")
+            ||velocity=="NONE"
+            ||goal==-1)
     {
-        RequestController::goal=goal;
+        if(goal!=-1)
+            RequestController::goal=goal;
         if(!velocity.empty())
             RequestController::velocity=velocity;
         oneSecond.stop();

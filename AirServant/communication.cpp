@@ -62,8 +62,9 @@ void Communication::on_readReady()
     }
     else if(dataJson["type"]=="wind")
     {
-        //do something here
-        ;
+        SendWindServer packet(dataStr);
+        ReceiveWindHandler handler;
+        handler.handleFromPacket(&packet,servant);
     }
 }
 

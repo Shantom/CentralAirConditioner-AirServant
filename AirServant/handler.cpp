@@ -47,3 +47,17 @@ void UpdateBillHandler::handleFromPacket(AirPacket *packet, Servant *servant)
     qDebug()<<"modified bill and kwh successfully.";
 
 }
+
+ReceiveWindHandler::ReceiveWindHandler()
+{
+
+}
+
+void ReceiveWindHandler::handleFromPacket(AirPacket *packet, Servant *servant)
+{
+    SendWindServer *packet_w=reinterpret_cast<SendWindServer*>(packet);
+    std::string velocity=packet_w->velocity;
+    int windTemp=packet_w->windtemp;
+    servant->setWind(windTemp,velocity);
+    qDebug()<<"modified windTemp and velocity successfully.";
+}

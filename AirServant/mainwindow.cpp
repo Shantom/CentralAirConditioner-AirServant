@@ -98,6 +98,10 @@ void MainWindow::on_pushButton_up_clicked()
         ui->lcdNumber->display(--goal);
         ui->label_warning->setText("WARNING:conflict with master.");
     }
+    else
+    {
+        servant.setActive(true);
+    }
 
 }
 
@@ -118,6 +122,10 @@ void MainWindow::on_pushButton_down_clicked()
         ui->lcdNumber->display(++goal);
         ui->label_warning->setText("WARNING:conflict with master.");
     }
+    else
+    {
+        servant.setActive(true);
+    }
 
 }
 
@@ -132,6 +140,7 @@ void MainWindow::on_pushButton_high_clicked()
     int goal=ui->lcdNumber->value();
     std::string velocity="HIGH";
     RequestController::request(goal,velocity);
+    servant.setActive(true);
 }
 
 void MainWindow::on_pushButton_medium_clicked()
@@ -145,6 +154,7 @@ void MainWindow::on_pushButton_medium_clicked()
     int goal=ui->lcdNumber->value();
     std::string velocity="MEDIUM";
     RequestController::request(goal,velocity);
+    servant.setActive(true);
 }
 
 void MainWindow::on_pushButton_low_clicked()
@@ -158,6 +168,7 @@ void MainWindow::on_pushButton_low_clicked()
     int goal=ui->lcdNumber->value();
     std::string velocity="LOW";
     RequestController::request(goal,velocity);
+    servant.setActive(true);
 }
 
 void MainWindow::on_pushButton_stop_clicked()
@@ -170,5 +181,6 @@ void MainWindow::on_pushButton_stop_clicked()
     ui->pushButton_stop->setEnabled(false);
     std::string velocity="NONE";
     RequestController::request(0,velocity);
+    servant.setActive(false);
 
 }

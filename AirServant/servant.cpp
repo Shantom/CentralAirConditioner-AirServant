@@ -4,7 +4,8 @@
 Servant::Servant()
 {
     Communication::servant=this;
-
+    tempCtrler=new TempController(true);//here change the season
+    tempCtrler->servant=this;
 }
 
 void Servant::sendBeat()

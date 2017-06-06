@@ -3,15 +3,17 @@
 
 #include <QObject>
 #include "headers.h"
+#include "servant.h"
 #include "QTimer"
-
+class Servant;
 class RequestController : public QObject
 {
     Q_OBJECT
 public:
     explicit RequestController(QObject *parent = 0);
     static void initial(Servant *serv);
-    static bool request(int goal, std::string velocity="");
+    static bool request(int goal=-1, std::string velocity="");
+    static std::string getVelocity(){return velocity;}
 
 private:
 

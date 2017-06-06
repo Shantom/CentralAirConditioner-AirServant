@@ -33,5 +33,13 @@ public:
     void handleFromPacket(AirPacket *packet, Servant * servant);
 };
 
+class ReceiveWindHandler:public Handler
+{
+public:
+    ReceiveWindHandler();
+    void handleFromPacket(AirPacket *packet, Servant * servant);
+
+};
+
 
 #endif // HANDLER_H
