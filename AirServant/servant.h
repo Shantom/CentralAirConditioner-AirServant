@@ -11,19 +11,26 @@ public:
     Servant();
     void setWin(MainWindow * mWin){this->mWin=mWin;}
     void sendBeat();
+    void setGoal(int goal){goalTemp=goal;}
+    int getGoal(){return goalTemp;}
+    void setTemp(int temp){cur_temperature=temp;}
+    int getTemp(){return cur_temperature;}
     void setPeriod(int newPeriod);
-    void setState(int temp, std::string mode);
-    void setBill(float bill,float kwh);
-    void startBeat();
     int getPeriod(){return refresh_period;}
-    float getBill(){return bill;}
-    float getKwh(){return kwh;}
+    void setState(int temp, std::string mode);
+    int getMaTemp(){return tempOfMaster;}
     std::string getMode(){if(mode==mode_hot)return std::string("HOT");
         else return std::string("COLD");}
+    void setBill(float bill,float kwh);
+    float getBill(){return bill;}
+    float getKwh(){return kwh;}
+    void startBeat();
 
 private:
-    work_mode mode=mode_hot;
-    int cur_temperature=26;
+    int goalTemp=26;
+    work_mode mode=mode_hot;// working mode of the master
+    int tempOfMaster=18;
+    int cur_temperature=30;
     int refresh_period=3;
     float bill=0;
     float kwh=0;

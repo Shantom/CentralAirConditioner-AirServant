@@ -47,7 +47,7 @@ public:
     std::string toJsonStr();
 private:
     int desttemp;
-    int velocity;
+    std::string velocity;
 };
 
 class StopWindClient:public AirPacket

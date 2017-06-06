@@ -54,7 +54,7 @@ std::string AuthClient::toJsonStr()
 }
 
 StartWindClient::StartWindClient(int _desttemp, std::string _velocity)
-    :desttemp(_desttemp),velocity(_desttemp)
+    :desttemp(_desttemp),velocity(_velocity)
 {
 
 }

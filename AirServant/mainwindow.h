@@ -5,6 +5,7 @@
 #include <login.h>
 #include "headers.h"
 #include "servant.h"
+#include "requestcontroller.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,8 +23,23 @@ public:
 private:
     Ui::MainWindow *ui;
     Servant servant;
+    int upperBound=30;
+    int lowerBound=17;
 public slots:
     void refreshInfo();
+private slots:
+    void on_pushButton_up_clicked();
+    void on_pushButton_down_clicked();
+
+    void on_pushButton_high_clicked();
+
+    void on_pushButton_medium_clicked();
+
+    void on_pushButton_low_clicked();
+
+    void on_pushButton_stop_clicked();
+
+signals:
 };
 
 #endif // MAINWINDOW_H

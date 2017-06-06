@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     startup.cpp \
     log.cpp \
     beatcontroller.cpp \
-    refreshuicontroller.cpp
+    refreshuicontroller.cpp \
+    requestcontroller.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     startup.h \
     log.h \
     beatcontroller.h \
-    refreshuicontroller.h
+    refreshuicontroller.h \
+    requestcontroller.h
 
 FORMS    += mainwindow.ui \
     login.ui

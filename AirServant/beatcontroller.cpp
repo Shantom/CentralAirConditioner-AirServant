@@ -13,7 +13,7 @@ void BeatController::sendBeat(TemperatureClient *packet)
 
 void BeatController::on_beat()
 {
-    TemperatureClient *packet=new TemperatureClient(servant->getPeriod());
+    TemperatureClient *packet=new TemperatureClient(servant->getTemp());
     sendBeat(packet);
     delete packet;
 }

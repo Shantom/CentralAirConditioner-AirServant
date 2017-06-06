@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>40</y>
+      <y>30</y>
       <width>166</width>
       <height>72</height>
      </rect>
@@ -101,29 +101,36 @@
      <rect>
       <x>260</x>
       <y>40</y>
-      <width>82</width>
-      <height>98</height>
+      <width>93</width>
+      <height>132</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_high">
        <property name="text">
         <string>HIGH</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_medium">
        <property name="text">
         <string>MEDIUM</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_low">
        <property name="text">
         <string>LOW</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_stop">
+       <property name="text">
+        <string>STOP</string>
        </property>
       </widget>
      </item>
@@ -132,13 +139,31 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>160</y>
+      <x>50</x>
+      <y>140</y>
       <width>137</width>
-      <height>80</height>
+      <height>136</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Temperature:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_temp">
+         <property name="text">
+          <string>30</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -152,6 +177,24 @@
         <widget class="QLabel" name="label_mode">
          <property name="text">
           <string>HOT</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>MaTemp:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_matemp">
+         <property name="text">
+          <string>18</string>
          </property>
         </widget>
        </item>
@@ -194,6 +237,19 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_warning">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>241</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

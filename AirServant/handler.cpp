@@ -16,9 +16,6 @@ void RefreshRateHandler::handleFromPacket(AirPacket *packet, Servant * servant)
     int period = packet_f->freshperiod;
     servant->setPeriod(period);
     qDebug()<<period<<"modified period successfully.";
-
-    //do something here
-
 }
 
 WorkingModeHandler::WorkingModeHandler()

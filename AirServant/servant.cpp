@@ -21,7 +21,7 @@ void Servant::setPeriod(int newPeriod)
 
 void Servant::setState(int temp, std::__cxx11::string mode)
 {
-    cur_temperature=temp;
+    tempOfMaster=temp;
     if(mode=="hot")
         this->mode=mode_hot;
     else if(mode=="cold")
