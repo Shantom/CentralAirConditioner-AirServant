@@ -15,7 +15,7 @@ void TempController::changeTemp()
     double curTemp=servant->getDTemp();
     int windTemp=servant->getMaTemp();
     double windFactor=(double(windTemp)-curTemp);
-    windFactor+=(windFactor>0)?15:-15;
+    windFactor+=(windFactor>0)?20:-20;
     windFactor*=WIND;
 
     //velocityFactor
