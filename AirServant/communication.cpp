@@ -30,7 +30,6 @@ void Communication::sendPack(AirPacket *package)
     QByteArray jsonB=QByteArray(jsonStr.c_str(),jsonStr.length());
     qDebug()<<jsonB;
     socket.write(jsonB);
-    socket.
 }
 
 void Communication::on_readReady()

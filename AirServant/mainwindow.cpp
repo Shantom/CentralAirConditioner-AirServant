@@ -100,6 +100,7 @@ void MainWindow::on_pushButton_up_clicked()
     }
     else
     {
+        servant.setGoal(goal);
         servant.setActive(true);
     }
 
@@ -124,6 +125,7 @@ void MainWindow::on_pushButton_down_clicked()
     }
     else
     {
+        servant.setGoal(goal);
         servant.setActive(true);
     }
 
