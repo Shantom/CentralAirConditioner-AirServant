@@ -2,12 +2,22 @@
 #define LOG_H
 #include <fstream>
 
-class Log
+#include <QString>
+#include <QTime>
+#include <QIODevice>
+#include "airpacket.h"
+using namespace std;
+
+class log
 {
 public:
-    Log();
-    static void startLogging();
-    static std::ofstream file;
+    log();
+    void initLog();
+    string getCurrentDT(QString curDT);
+    void handlePacket(AirPacket* packet);
+    ofstream out;
+private:
+    QString curDT;
 };
 
 #endif // LOG_H
