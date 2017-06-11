@@ -18,7 +18,9 @@ public:
     static QTcpSocket socket;
     static Servant * servant;
 private:
-    static QQueue<AirPacket *> sendQueue;
+    static QQueue<AirPacket *> sendQueue;//what does this do...?
+    static std::vector<std::string> parseJsonStr(std::string & originStr);
+    static std::string parseOneJson(std::string & originStr);
 
 signals:
 

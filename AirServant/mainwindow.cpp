@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Servant");
     servant.setWin(this);
     RequestController::initial(&servant);
     RefreshUIController::theCtrler=new RefreshUIController();
