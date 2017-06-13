@@ -28,6 +28,11 @@ std::string TemperatureClient::toJsonStr()
     return pac.dump();
 }
 
+PACKET_TYPE TemperatureClient::getType()
+{
+   return TEMP_PACKET;
+}
+
 AuthClient::AuthClient(std::string _room, std::string _id)
     :room(_room),id(_id)
 {
@@ -53,6 +58,11 @@ std::string AuthClient::toJsonStr()
     return pac.dump();
 }
 
+PACKET_TYPE AuthClient::getType()
+{
+   return AUTH_PACKET;
+}
+
 StartWindClient::StartWindClient(int _desttemp, std::string _velocity)
     :desttemp(_desttemp),velocity(_velocity)
 {
@@ -75,6 +85,11 @@ std::string StartWindClient::toJsonStr()
     return pac.dump();
 }
 
+PACKET_TYPE StartWindClient::getType()
+{
+   return START_WIND_PACKET;
+}
+
 StopWindClient::StopWindClient()
 {
 
@@ -91,6 +106,11 @@ std::string StopWindClient::toJsonStr()
     json pac;
     pac["type"]="stopwind";
     return pac.dump();
+}
+
+PACKET_TYPE StopWindClient::getType()
+{
+   return STOP_WIND_PACKET;
 }
 
 FreshRateServer::FreshRateServer(int _freshperiod)
@@ -114,6 +134,11 @@ std::string FreshRateServer::toJsonStr()
     return pac.dump();
 }
 
+PACKET_TYPE FreshRateServer::getType()
+{
+   return FRESHRATE_PACKET;
+}
+
 SendWindServer::SendWindServer(int windtemp, std::string velocity)
     :windtemp(windtemp),velocity(velocity)
 {
@@ -126,6 +151,11 @@ SendWindServer::SendWindServer(std::string& packet)
     json pac=json::parse(packet);
     windtemp=pac["windtemp"];
     velocity=pac["velocity"];
+}
+
+PACKET_TYPE SendWindServer::getType()
+{
+   return SEND_WIND_PACKET;
 }
 
 std::string SendWindServer::toJsonStr()
@@ -160,6 +190,11 @@ std::string WorkStateServer::toJsonStr()
     return pac.dump();
 }
 
+PACKET_TYPE WorkStateServer::getType()
+{
+   return WORK_STATE_PACKET;
+}
+
 CountFeeServer::CountFeeServer(float kwh, float bill)
     :kwh(kwh),bill(bill)
 {
@@ -181,4 +216,9 @@ std::string CountFeeServer::toJsonStr()
     pac["kwh"]=kwh;
     pac["bill"]=bill;
     return pac.dump();
+}
+
+PACKET_TYPE CountFeeServer::getType()
+{
+   return COUNT_FEE_PACKET;
 }

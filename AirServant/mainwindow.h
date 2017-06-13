@@ -39,6 +39,9 @@ private slots:
 
     void on_pushButton_stop_clicked();
 
+    void on_close();
+
+
 signals:
 };
 

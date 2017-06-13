@@ -8,10 +8,10 @@
 #include "airpacket.h"
 using namespace std;
 
-class log
+class Log
 {
 public:
-    log();
+    Log();
     void initLog();
     string getCurrentDT(QString curDT);
     void handlePacket(AirPacket* packet);

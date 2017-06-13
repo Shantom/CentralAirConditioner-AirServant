@@ -1,17 +1,17 @@
 #include "log.h"
 
-log::log()
+Log::Log()
 {
     initLog();
 }
 
-void log::initLog()
+void Log::initLog()
 {
     out.open("log.txt",ios::out);
 }
 
 //CURRENT TIME
-string log::getCurrentDT(QString curDT)
+string Log::getCurrentDT(QString curDT)
 {
     QDateTime dt=QDateTime::currentDateTime();
     curDT = dt.toString("yyyy-MM-dd hh:mm:ss ddd");
@@ -19,44 +19,44 @@ string log::getCurrentDT(QString curDT)
     return s;
 }
 
-void log::handlePacket(AirPacket *packet)
+void Log::handlePacket(AirPacket *packet)
 {
     string s = getCurrentDT(curDT);
     out << s << " ";
     PACKET_TYPE type = packet->getType();
     switch(type){
-    case 1:{
+    case TEMP_PACKET:{
         TemperatureClient *tempPacket=(TemperatureClient*)packet;
         out<<"temp="<<tempPacket->temp<<endl;
     }
-    case 2:{
+    case AUTH_PACKET:{
         AuthClient *AuthPacket = (AuthClient*)packet;
         out<<"room="<<AuthPacket->room;
         out<<" id="<<AuthPacket->id<<endl;
     }
-    case 3:{
+    case START_WIND_PACKET:{
         StartWindClient *StartWPacket = (StartWindClient*)packet;
         out<<"desttemp="<<StartWPacket->desttemp<<" velocity="<<StartWPacket->velocity<<endl;
     }
-    case 4:{
+    case STOP_WIND_PACKET:{
         StopWindClient *stopWPacket = (StopWindClient*)packet;
-        out<<" "<<endl;
+        out<<"stopWPacket"<<endl;
     }
-    case 5:{
+    case FRESHRATE_PACKET:{
         FreshRateServer *FRPacket = (FreshRateServer*)packet;
         out<<"freshperiod="<<FRPacket->freshperiod<<endl;
     }
-    case 6:{
+    case WORK_STATE_PACKET:{
         WorkStateServer *WSPacket = (WorkStateServer*)packet;
         out<<"workingmode="<<WSPacket->workingmode;
         out<<" defaulttemp="<<WSPacket->defaulttemp<<endl;
     }
-    case 7:{
+    case COUNT_FEE_PACKET:{
         CountFeeServer *CFPacket = (CountFeeServer*)packet;
         out<<"kwh="<<CFPacket->kwh;
         out<<" bill="<<CFPacket->bill<<endl;
     }
-    case 8:{
+    case SEND_WIND_PACKET:{
         SendWindServer *sendWPacket = (SendWindServer*)packet;
         out<<"windtemp="<<sendWPacket->windtemp;
         out<<" velocity="<<sendWPacket->velocity<<endl;

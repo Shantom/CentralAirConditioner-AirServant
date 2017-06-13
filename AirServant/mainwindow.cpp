@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::critical(this,"error","can't connect to the master!");
         exit(404);
     }
+    connect(&Communication::socket,&QAbstractSocket::disconnected,
+            this,&MainWindow::on_close);
     servant.startBeat();
 }
 MainWindow::~MainWindow()
@@ -186,4 +188,10 @@ void MainWindow::on_pushButton_stop_clicked()
     RequestController::request(0,velocity);
     servant.setActive(false);
 
+}
+
+void MainWindow::on_close()
+{
+    QMessageBox::critical(this,"Disconnected","Disconnected with master.");
+    exit(405);
 }

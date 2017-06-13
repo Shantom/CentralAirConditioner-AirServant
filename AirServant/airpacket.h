@@ -7,24 +7,28 @@
 
 using json=nlohmann::json;
 
+enum PACKET_TYPE{TEMP_PACKET=1,AUTH_PACKET=2,START_WIND_PACKET=3,STOP_WIND_PACKET=4,
+                 FRESHRATE_PACKET=5,WORK_STATE_PACKET=6,COUNT_FEE_PACKET=7,SEND_WIND_PACKET=8,ERROR_PACKET=9};
+
+
 class AirPacket
 {
+
 public:
     AirPacket();
     virtual std::string toJsonStr()=0;
-
-private:
+    virtual PACKET_TYPE  getType()=0;
     std::string sourceIp;
     int sourcePort;
 };
 
-class TemperatureClient:public AirPacket
+class TemperatureClient: public AirPacket
 {
 public:
     TemperatureClient(int _temp);
     TemperatureClient(std::string& packet);
     std::string toJsonStr();
-private:
+    PACKET_TYPE  getType();
     int temp;
 };
 
@@ -34,7 +38,7 @@ public:
     AuthClient(std::string _room,std::string _id);
     AuthClient(std::string& packet);
     std::string toJsonStr();
-private:
+    PACKET_TYPE  getType();
     std::string room;
     std::string id;
 };
@@ -45,7 +49,7 @@ public:
     StartWindClient(int _desttemp,std::string _velocity);
     StartWindClient(std::string& packet);
     std::string toJsonStr();
-private:
+    PACKET_TYPE  getType();
     int desttemp;
     std::string velocity;
 };
@@ -56,7 +60,8 @@ public:
     StopWindClient();
     StopWindClient(std::string& packet);
     std::string toJsonStr();
-private:
+    PACKET_TYPE  getType();
+
 
 };
 
@@ -66,6 +71,7 @@ public:
     FreshRateServer(int _freshperiod);
     FreshRateServer(std::string& packet);
     std::string toJsonStr();
+    PACKET_TYPE  getType();
     int freshperiod;
 };
 
@@ -75,6 +81,7 @@ public:
     WorkStateServer(std::string _workingmode,int _deftemp);
     WorkStateServer(std::string& packet);
     std::string toJsonStr();
+    PACKET_TYPE  getType();
     std::string workingmode;
     int defaulttemp;
 };
@@ -85,6 +92,7 @@ public:
     CountFeeServer(float kwh,float bill);
     CountFeeServer(std::string& packet);
     std::string toJsonStr();
+    PACKET_TYPE  getType();
     float kwh;
     float bill;
 };
@@ -95,6 +103,7 @@ public:
     SendWindServer(int windtemp,std::string velocity);
     SendWindServer(std::string& packet);
     std::string toJsonStr();
+    PACKET_TYPE  getType();
     int windtemp;
     std::string velocity;
 };
