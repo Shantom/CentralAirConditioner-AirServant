@@ -11,7 +11,7 @@ bool LoginController::login(std::__cxx11::string ROOMID, std::__cxx11::string US
     AuthClient p(ROOMID,USERID);
     com.sendPack(&p);
 
-    if(Communication::socket.waitForReadyRead(-1))
+    if(Communication::socket.waitForReadyRead(10000))
         return true;
     else
         return false;

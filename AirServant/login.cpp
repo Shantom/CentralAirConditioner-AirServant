@@ -24,5 +24,5 @@ void Login::on_pushButton_login_clicked()
     if(lc.login(roomid.toStdString(),userid.toStdString()))
         accept();
     else
-        QMessageBox::warning(this,"Failed","ID mismatched.");
+        QMessageBox::critical(this,"Failed","Lost connection with master.");
 }
