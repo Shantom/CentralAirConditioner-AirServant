@@ -20,7 +20,7 @@ void Servant::setPeriod(int newPeriod)
     beatTimer->setInterval(1000*refresh_period);
 }
 
-void Servant::setState(int temp, std::__cxx11::string mode)
+void Servant::setState(int temp, std::string mode)
 {
     tempOfMaster=temp;
     if(mode=="hot")
@@ -37,7 +37,7 @@ void Servant::setBill(float bill, float kwh)
     RefreshUIController::theCtrler->refresh();
 }
 
-void Servant::setWind(int windtemp, std::__cxx11::string velocity)
+void Servant::setWind(int windtemp, std::string velocity)
 {
     if(velocity=="none")
         this->velocity="NONE";

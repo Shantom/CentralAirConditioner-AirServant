@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_down->setEnabled(false);
     ui->label_warning->setStyleSheet("color:red");
 
-    std::string addr="10.201.11.213";
+    std::string addr="127.0.0.1";
     int port=6666;
     std::ifstream file("../serverAddr.dat");
     if(file)

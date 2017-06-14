@@ -5,7 +5,7 @@ LoginController::LoginController()
 
 }
 
-bool LoginController::login(std::__cxx11::string ROOMID, std::__cxx11::string USERID)
+bool LoginController::login(std::string ROOMID, std::string USERID)
 {
     Communication com;
     AuthClient p(ROOMID,USERID);
