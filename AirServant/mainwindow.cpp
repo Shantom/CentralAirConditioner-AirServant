@@ -103,6 +103,7 @@ void MainWindow::on_pushButton_up_clicked()
     }
     else
     {
+        ui->label_warning->setText(" ");
         servant.setGoal(goal);
         servant.setActive(true);
     }
@@ -128,6 +129,7 @@ void MainWindow::on_pushButton_down_clicked()
     }
     else
     {
+        ui->label_warning->setText(" ");
         servant.setGoal(goal);
         servant.setActive(true);
     }
@@ -136,44 +138,71 @@ void MainWindow::on_pushButton_down_clicked()
 
 void MainWindow::on_pushButton_high_clicked()
 {
-    ui->pushButton_up->setEnabled(true);
-    ui->pushButton_down->setEnabled(true);
-    ui->pushButton_high->setEnabled(false);
-    ui->pushButton_medium->setEnabled(true);
-    ui->pushButton_low->setEnabled(true);
-    ui->pushButton_stop->setEnabled(true);
     int goal=ui->lcdNumber->value();
     std::string velocity="HIGH";
-    RequestController::request(goal,velocity);
-    servant.setActive(true);
+    bool result=RequestController::request(goal,velocity);
+    if(!result)
+    {
+        ui->label_warning->setText("WARNING:conflict with master.");
+    }
+    else
+    {
+        ui->pushButton_up->setEnabled(true);
+        ui->pushButton_down->setEnabled(true);
+        ui->pushButton_high->setEnabled(false);
+        ui->pushButton_medium->setEnabled(true);
+        ui->pushButton_low->setEnabled(true);
+        ui->pushButton_stop->setEnabled(true);
+        ui->label_warning->setText(" ");
+        servant.setGoal(goal);
+        servant.setActive(true);
+    }
 }
 
 void MainWindow::on_pushButton_medium_clicked()
 {
-    ui->pushButton_up->setEnabled(true);
-    ui->pushButton_down->setEnabled(true);
-    ui->pushButton_high->setEnabled(true);
-    ui->pushButton_medium->setEnabled(false);
-    ui->pushButton_low->setEnabled(true);
-    ui->pushButton_stop->setEnabled(true);
     int goal=ui->lcdNumber->value();
     std::string velocity="MEDIUM";
-    RequestController::request(goal,velocity);
-    servant.setActive(true);
+    bool result=RequestController::request(goal,velocity);
+    if(!result)
+    {
+        ui->label_warning->setText("WARNING:conflict with master.");
+    }
+    else
+    {
+        ui->pushButton_up->setEnabled(true);
+        ui->pushButton_down->setEnabled(true);
+        ui->pushButton_high->setEnabled(true);
+        ui->pushButton_medium->setEnabled(false);
+        ui->pushButton_low->setEnabled(true);
+        ui->pushButton_stop->setEnabled(true);
+        ui->label_warning->setText(" ");
+        servant.setGoal(goal);
+        servant.setActive(true);
+    }
 }
 
 void MainWindow::on_pushButton_low_clicked()
 {
-    ui->pushButton_up->setEnabled(true);
-    ui->pushButton_down->setEnabled(true);
-    ui->pushButton_high->setEnabled(true);
-    ui->pushButton_medium->setEnabled(true);
-    ui->pushButton_low->setEnabled(false);
-    ui->pushButton_stop->setEnabled(true);
     int goal=ui->lcdNumber->value();
-    std::string velocity="LOW";
-    RequestController::request(goal,velocity);
-    servant.setActive(true);
+    std::string velocity="MEDIUM";
+    bool result=RequestController::request(goal,velocity);
+    if(!result)
+    {
+        ui->label_warning->setText("WARNING:conflict with master.");
+    }
+    else
+    {
+        ui->pushButton_up->setEnabled(true);
+        ui->pushButton_down->setEnabled(true);
+        ui->pushButton_high->setEnabled(true);
+        ui->pushButton_medium->setEnabled(true);
+        ui->pushButton_low->setEnabled(false);
+        ui->pushButton_stop->setEnabled(true);
+        ui->label_warning->setText(" ");
+        servant.setGoal(goal);
+        servant.setActive(true);
+    }
 }
 
 void MainWindow::on_pushButton_stop_clicked()
